@@ -5,7 +5,7 @@
 #ifndef INC_3D_CURRENTLINEVISUALIZATION_TRILINEARINTERPOLATION_H
 #define INC_3D_CURRENTLINEVISUALIZATION_TRILINEARINTERPOLATION_H
 
-#include "utils/vector3.h"
+#include "services/vector3.h"
 
 /*
 	Вычисляет новую точку с помощью трилинейной интерполяции

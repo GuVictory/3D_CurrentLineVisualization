@@ -3,7 +3,7 @@
 
 
 #include <vector>
-#include "utils/vector3.h"
+#include "services/vector3.h"
 
 /*
     Класс, представляющий линию тока в 3D пространстве

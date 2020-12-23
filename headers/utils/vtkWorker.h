@@ -11,7 +11,6 @@
 #include <vtkDataArray.h>
 #include <vtkStructuredPoints.h>
 #include <vtkPointData.h>
-#include "services/vector3.h"
 #include "utils/trilinearInterpolation.h"
 
 /*

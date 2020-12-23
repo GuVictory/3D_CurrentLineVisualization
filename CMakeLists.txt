@@ -9,7 +9,7 @@ include(${VTK_USE_FILE})
 add_executable(3D_CurrentLineVisualization
         main.cpp
         src/services/streamline.cpp
-        src/utils/vector3.cpp headers/utils/trilinearInterpolation.h)
+        src/services/vector3.cpp)
 
 target_include_directories(3D_CurrentLineVisualization PUBLIC ./headers)
 target_link_libraries(3D_CurrentLineVisualization ${VTK_LIBRARIES})

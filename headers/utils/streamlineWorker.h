@@ -32,7 +32,7 @@ Streamline* getStreamlineSection(vtkSmartPointer<vtkStructuredPoints> vectorFiel
     Streamline* streamlineSection = new Streamline();
 
     // Определите максимальную длину обтекаемого участка
-    int n = 600;
+    int n = 1000;
     int length = 0;
 
     // Хранить координаты начальной точки

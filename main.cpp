@@ -174,37 +174,38 @@ int main(int argc, char** argv)
         }
     }
 
+    int speedOfBox = -1;
     // Добавим граничные точки и создадим граничные линии
     points->InsertNextPoint(origin[0], origin[1], origin[2]);
-    pointColors->SetValue(pointIndex, maxSpeed);
+    pointColors->SetValue(pointIndex, speedOfBox);
     pointIndex += 1;
 
     points->InsertNextPoint((dimensions[0] * spacing[0]) + origin[0], origin[1], origin[2]);
-    pointColors->SetValue(pointIndex, maxSpeed);
+    pointColors->SetValue(pointIndex, speedOfBox);
     pointIndex += 1;
 
     points->InsertNextPoint((dimensions[0] * spacing[0]) + origin[0], origin[1], (dimensions[2] * spacing[2]) + origin[2]);
-    pointColors->SetValue(pointIndex, maxSpeed);
+    pointColors->SetValue(pointIndex, speedOfBox);
     pointIndex += 1;
 
     points->InsertNextPoint(origin[0], origin[1], (dimensions[2] * spacing[2]) + origin[2]);
-    pointColors->SetValue(pointIndex, maxSpeed);
+    pointColors->SetValue(pointIndex, speedOfBox);
     pointIndex += 1;
 
     points->InsertNextPoint(origin[0], (dimensions[1] * spacing[1]) + origin[1], origin[2]);
-    pointColors->SetValue(pointIndex, maxSpeed);
+    pointColors->SetValue(pointIndex, speedOfBox);
     pointIndex += 1;
 
     points->InsertNextPoint((dimensions[0] * spacing[0]) + origin[0], (dimensions[1] * spacing[1]) + origin[1], origin[2]);
-    pointColors->SetValue(pointIndex, maxSpeed);
+    pointColors->SetValue(pointIndex, speedOfBox);
     pointIndex += 1;
 
     points->InsertNextPoint((dimensions[0] * spacing[0]) + origin[0], (dimensions[1] * spacing[1]) + origin[1], (dimensions[2] * spacing[2]) + origin[2]);
-    pointColors->SetValue(pointIndex, maxSpeed);
+    pointColors->SetValue(pointIndex, speedOfBox);
     pointIndex += 1;
 
     points->InsertNextPoint(origin[0], (dimensions[1] * spacing[1]) + origin[1], (dimensions[2] * spacing[2]) + origin[2]);
-    pointColors->SetValue(pointIndex, maxSpeed);
+    pointColors->SetValue(pointIndex, speedOfBox);
     pointIndex += 1;
 
     vtkSmartPointer<vtkLine> line = vtkSmartPointer<vtkLine>::New();
@@ -285,8 +286,9 @@ int main(int argc, char** argv)
 
     // Определим цветовую функцию для визуализации скорости на векторном поле
     vtkSmartPointer<vtkColorTransferFunction> colorFunction = vtkSmartPointer<vtkColorTransferFunction>::New();
-    colorFunction->AddRGBPoint(maxSpeed, 1.0, 1.0, 1.0);	// White for max speed
-    colorFunction->AddRGBPoint(minSpeed, 0.0, 0.0, 1.0); 	// Blue for low speed
+    colorFunction->AddRGBPoint(maxSpeed, 1.0, 0.0, 0.0);	// Красный для максимальной скорости
+    colorFunction->AddRGBPoint(minSpeed, 0.0, 1.0, 0.0); 	// Зеленый для минимальной скорости
+    colorFunction->AddRGBPoint(speedOfBox, 0.0, 0.0, 0.0); // Черный для гриниц сетки
 
     vtkSmartPointer<vtkPolyDataMapper> mapper = vtkSmartPointer<vtkPolyDataMapper>::New();
     mapper->SetInputData(linesPolydata);
@@ -297,7 +299,7 @@ int main(int argc, char** argv)
 
     vtkSmartPointer<vtkRenderer> renderer = vtkSmartPointer<vtkRenderer>::New();
     renderer->AddActor(actor);
-    renderer->SetBackground(0.1, 0.1, 0.1);
+    renderer->SetBackground(1, 1, 1);
 
     vtkSmartPointer<vtkRenderWindow> window = vtkSmartPointer<vtkRenderWindow>::New();
     window->AddRenderer(renderer);
